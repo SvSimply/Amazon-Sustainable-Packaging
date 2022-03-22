@@ -12,6 +12,7 @@ public class MonetaryCostStrategyTest {
 
     private static final Packaging BOX_10x10x20 =
         new Box(BigDecimal.valueOf(10), BigDecimal.valueOf(10), BigDecimal.valueOf(20));
+    private static final Packaging POLYBAG_3600 = new PolyBag(BigDecimal.valueOf(3600));
 
     private MonetaryCostStrategy strategy;
 
@@ -33,5 +34,20 @@ public class MonetaryCostStrategyTest {
         // THEN
         assertTrue(BigDecimal.valueOf(5.43).compareTo(shipmentCost.getCost()) == 0,
             "Incorrect monetary cost calculation for a box with dimensions 10x10x20.");
+    }
+
+    @Test
+    void getCost_laminatedPlasticMaterial_returnsCorrectCost() {
+        // GIVEN
+        ShipmentOption option = ShipmentOption.builder()
+                .withPackaging(POLYBAG_3600)
+                .build();
+
+        // WHEN
+        ShipmentCost shipmentCost = strategy.getCost(option);
+
+        // THEN
+        assertTrue(BigDecimal.valueOf(9.43).compareTo(shipmentCost.getCost()) == 0,
+                "Incorrect monetary cost calculation for a box with dimensions 10x10x20.");
     }
 }

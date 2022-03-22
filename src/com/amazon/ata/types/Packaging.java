@@ -10,7 +10,7 @@ import java.util.Objects;
  * Items can fit in the packaging so long as their dimensions are all smaller than
  * the packaging's dimensions.
  */
-abstract public class Packaging {
+public abstract class Packaging {
     /**
      * The material this packaging is made of.
      */
