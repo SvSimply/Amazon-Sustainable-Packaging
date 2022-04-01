@@ -29,7 +29,18 @@ public class PackagingDatastore {
             createFcPackagingOption("PDX1", new Box(BigDecimal.valueOf(60), BigDecimal.valueOf(60), BigDecimal.valueOf(60))),
             createFcPackagingOption("PDX1", new Box(BigDecimal.valueOf(60), BigDecimal.valueOf(60), BigDecimal.valueOf(60))),
             createFcPackagingOption("IAD2", new PolyBag(BigDecimal.valueOf(2000))),
-            createFcPackagingOption("IAD2", new PolyBag(BigDecimal.valueOf(10000)))
+            createFcPackagingOption("IAD2", new PolyBag(BigDecimal.valueOf(10000))),
+            createFcPackagingOption("IAD2", new PolyBag(BigDecimal.valueOf(5000))),
+            createFcPackagingOption("YOW4", new PolyBag(BigDecimal.valueOf(2000))),
+            createFcPackagingOption("YOW4", new PolyBag(BigDecimal.valueOf(5000))),
+            createFcPackagingOption("YOW4", new PolyBag(BigDecimal.valueOf(10000))),
+            createFcPackagingOption("IND1", new PolyBag(BigDecimal.valueOf(2000))),
+            createFcPackagingOption("IND1", new PolyBag(BigDecimal.valueOf(5000))),
+            createFcPackagingOption("ABE2", new PolyBag(BigDecimal.valueOf(2000))),
+            createFcPackagingOption("ABE2", new PolyBag(BigDecimal.valueOf(6000))),
+            createFcPackagingOption("PDX1", new PolyBag(BigDecimal.valueOf(5000))),
+            createFcPackagingOption("PDX1", new PolyBag(BigDecimal.valueOf(10000))),
+            createFcPackagingOption("YOW4", new PolyBag(BigDecimal.valueOf(5000)))
 
     );
 
