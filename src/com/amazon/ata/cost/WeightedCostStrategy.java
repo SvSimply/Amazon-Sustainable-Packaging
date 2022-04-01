@@ -5,7 +5,6 @@ import com.amazon.ata.types.ShipmentCost;
 import com.amazon.ata.types.ShipmentOption;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +26,7 @@ public class WeightedCostStrategy implements CostStrategy {
     public ShipmentCost getCost(ShipmentOption shipmentOption) {
         Packaging packaging = shipmentOption.getPackaging();
         BigDecimal cost = new BigDecimal(0);
-        for(CostStrategy strategy : costStrategyWithWeightMap.keySet()) {
+        for (CostStrategy strategy : costStrategyWithWeightMap.keySet()) {
             cost = cost.add(strategy.getCost(shipmentOption).getCost().multiply(costStrategyWithWeightMap.get(strategy)));
         }
 
