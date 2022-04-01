@@ -29,7 +29,7 @@ public class PackagingDAO {
 //        this.fcPackagingOptions =  new ArrayList<>(datastore.getFcPackagingOptions());
         this.fcPackagingOptionsMap = new HashMap<>();
         List<FcPackagingOption> options = datastore.getFcPackagingOptions();
-        for(FcPackagingOption option : options) {
+        for (FcPackagingOption option : options) {
             Set<FcPackagingOption> fcPackagingOptions = this.fcPackagingOptionsMap.get(option.getFulfillmentCenter());
             if (fcPackagingOptions == null) {
                 fcPackagingOptions = new HashSet<>();

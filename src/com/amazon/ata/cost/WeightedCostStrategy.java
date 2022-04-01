@@ -13,7 +13,7 @@ public class WeightedCostStrategy implements CostStrategy {
     private Map<CostStrategy, BigDecimal> costStrategyWithWeightMap;
 
     private WeightedCostStrategy() {    }
-    
+
 
     /**
      * Creates a new builder for populating a WeightedCostStrategy.
