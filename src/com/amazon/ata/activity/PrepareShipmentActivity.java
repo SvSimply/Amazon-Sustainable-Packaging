@@ -1,5 +1,6 @@
 package com.amazon.ata.activity;
 
+import com.amazon.ata.exceptions.NoPackagingFitsItemException;
 import com.amazon.ata.service.ShipmentService;
 import com.amazon.ata.types.FulfillmentCenter;
 import com.amazon.ata.types.Item;
@@ -58,22 +59,23 @@ public class PrepareShipmentActivity
 
         FulfillmentCenter fulfillmentCenter = new FulfillmentCenter(request.getFcCode());
 
-        ShipmentOption shipmentOption = shipmentService.findShipmentOption(item, fulfillmentCenter);
-
-        if (shipmentOption == null) {
-            return null;
-        }
-
-        // Converting the shipmentOption to JSON using ObjectMapper
-        ObjectMapper objectMapper = new ObjectMapper();
-        String shipmentOptionJSON = null;
         try {
+            ShipmentOption shipmentOption = shipmentService.findShipmentOption(item, fulfillmentCenter);
+
+            // Converting the shipmentOption to JSON using ObjectMapper
+            ObjectMapper objectMapper = new ObjectMapper();
+            String shipmentOptionJSON = null;
             shipmentOptionJSON = objectMapper.writeValueAsString(shipmentOption);
+            return shipmentOptionJSON;
+        } catch (RuntimeException e) {
+            return null;
+        } catch (NoPackagingFitsItemException e) {
+            return null;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
-        return shipmentOptionJSON;
+        return null;
     }
 }
 
