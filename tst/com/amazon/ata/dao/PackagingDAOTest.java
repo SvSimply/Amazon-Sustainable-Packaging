@@ -59,7 +59,7 @@ class PackagingDAOTest {
         List<ShipmentOption> shipmentOptions = packagingDAO.findShipmentOptions(smallItem, ind1);
 
         // THEN
-        assertEquals(1, shipmentOptions.size(),
+        assertEquals(3, shipmentOptions.size(),
             "When fulfillment center has packaging that can fit item, return a ShipmentOption with the item, "
                 + "fulfillment center, and packaging that can fit the item.");
     }
@@ -87,9 +87,22 @@ class PackagingDAOTest {
         List<ShipmentOption> shipmentOptions = packagingDAO.findShipmentOptions(smallItem, abe2);
 
         // THEN
-        assertEquals(2, shipmentOptions.size(),
+        assertEquals(4, shipmentOptions.size(),
             "When fulfillment center has multiple packaging that can fit item, return a ShipmentOption "
                 + "for each.");
+    }
+
+    @Test
+    public void findShipmentOptions_doublesInDatastore_returnOneOption() throws Exception {
+        // GIVEN
+        packagingDAO = new PackagingDAO(datastore);
+
+        // WHEN
+        List<ShipmentOption> shipmentOptions = packagingDAO.findShipmentOptions(smallItem, iad2);
+
+        // THEN
+        assertEquals(4, shipmentOptions.size(),
+                "Fulfillment center shouldn't contain multiple packaging options with the same package parameters");
     }
 
     private Item createItem(String length, String width, String height) {

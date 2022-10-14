@@ -39,7 +39,7 @@ public class PrepareShipmentActivityTest {
     public void handleRequest_noAvailableShipmentOption_returnsNull() throws Exception {
         // GIVEN
         PrepareShipmentActivity activity = new PrepareShipmentActivity(shipmentService);
-        when(shipmentService.findShipmentOption(any(Item.class), any(FulfillmentCenter.class))).thenReturn(null);
+        when(shipmentService.findShipmentOption(any(Item.class), any(FulfillmentCenter.class))).thenThrow(RuntimeException.class);
 
         // WHEN
         String response = activity.handleRequest(request, null);

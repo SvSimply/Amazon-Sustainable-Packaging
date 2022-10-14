@@ -1,0 +1,26 @@
+@startuml
+title Weighted Cost Strategy
+
+'https://plantuml.com/class-diagram
+
+class MonetaryCostStrategy {
+}
+
+class CarbonCostStrategy {
+}
+
+class WeightedCostStrategy {
+}
+
+interface CostStrategy {
+  +getCost(ShipmentOption): ShipmentCost
+}
+
+CostStrategy <|.. MonetaryCostStrategy
+CostStrategy <|.. CarbonCostStrategy
+CostStrategy <|.. WeightedCostStrategy
+WeightedCostStrategy o-- MonetaryCostStrategy
+WeightedCostStrategy o-- CarbonCostStrategy
+
+
+@enduml
